@@ -1,10 +1,13 @@
 import React from "react";
 import Router from "./App.router";
-import "./Styles.scss";
+import { ThemeProvider } from "@material-ui/core/styles";
+import * as Theme from "./util/Theme";
 function App() {
   return (
     <React.Fragment>
-      <Router />
+      <ThemeProvider theme={Theme.Light}>
+        <Router />
+      </ThemeProvider>
     </React.Fragment>
   );
 }
