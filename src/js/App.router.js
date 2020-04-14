@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Loadable from "react-loadable";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import SideBar from "./util/Sidebar";
+import * as Action from "../js/redux/actions";
 const AsynHome = Loadable({
   loader: () => import("./components/Home/Home"),
   loading: () => <div>Loading......</div>,
 });
 const AsyncLogin = Loadable({
-  loader: () => import("./components/Home/Home"),
+  loader: () => import("./components/Login/"),
   loading: () => <div>Loading......</div>,
 });
 const Router = () => {
+  const dispatch = useDispatch();
+  const { auth } = useSelector(({ Authentication }) => Authentication);
+  useEffect(() => {
+    dispatch(Action.TokenVerify());
+  }, []);
   return (
     <BrowserRouter>
-      <SideBar />
-      <Switch>
-        <Route path="/" exact component={AsynHome} />
-        <Route path="/Login" exact component={AsyncLogin} />
-      </Switch>
+      <SideBar>
+        <Switch>
+          <Route
+            path="/Home"
+            exact
+            render={() =>
+              auth === true ? <AsynHome /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            path="/Login"
+            exact
+            render={() =>
+              auth === false ? <AsyncLogin /> : <Redirect to="/Home" />
+            }
+          />
+        </Switch>
+      </SideBar>
     </BrowserRouter>
   );
 };

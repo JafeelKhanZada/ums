@@ -2,13 +2,14 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createReducer from "../reducer";
 import logger from "redux-logger";
 import sagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
 import { RootSaga } from "../saga/rootSaga";
 import "regenerator-runtime/runtime";
 const createSagaMiddleware = sagaMiddleware();
 const store = createStore(
   createReducer(),
   {},
-  compose(applyMiddleware(logger, createSagaMiddleware))
+  compose(applyMiddleware(logger, createSagaMiddleware, thunk))
 );
 createSagaMiddleware.run(RootSaga);
 store.asyncReducers = {};

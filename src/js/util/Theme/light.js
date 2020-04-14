@@ -17,6 +17,7 @@ const Light = {
       secondary: "#8898AA",
       subHeading: "#43425D",
       fontFamily: "'Poppins', sans-serif",
+      dark: "#807A80",
     },
     attendance: {
       success: "#64E478",

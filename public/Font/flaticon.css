@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 10/04/2020 19:55
+  	Creation date: 14/04/2020 07:13
   	*/
 
 @font-face {
@@ -42,3 +42,4 @@ margin-left: 20px;
 .flaticon-college-graduation:before { content: "\f109"; }
 .flaticon-music-black-vertical-bars:before { content: "\f10a"; }
 .flaticon-menu:before { content: "\f10b"; }
+.flaticon-logout:before { content: "\f10c"; }

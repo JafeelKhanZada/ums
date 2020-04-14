@@ -1,17 +1,11 @@
 import { combineReducers } from "redux";
-const Authentication = (state = true, action) => {
-  switch (action.type) {
-    default: {
-      return {
-        ...state
-      };
-    }
-  }
-};
-const CreateReducer = asyncreducers => {
+import Authentication from "./Login";
+import Common from "./Common";
+const CreateReducer = (asyncreducers) => {
   return combineReducers({
-    Auth: Authentication,
-    ...asyncreducers
+    Authentication,
+    Common,
+    ...asyncreducers,
   });
 };
 export default CreateReducer;
