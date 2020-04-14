@@ -14,10 +14,11 @@ import * as Action from "../../redux/actions";
 function Login() {
   const classes = style();
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, errors } = useForm({
     mode: "onSubmit",
     reValidateMode: "onBlur",
   });
+  console.log(errors);
   const onSubmit = (data) => dispatch(Action.login(data));
   return (
     <Grid container>
@@ -39,11 +40,18 @@ function Login() {
               className={classes.inputContainer}
               id="input-with-icon-adornment"
               name="id"
-              inputRef={register({ required: true })}
+              style={{
+                borderBottomColor: errors.id ? "red" : "white",
+              }}
+              inputRef={register({ required: true, message: "123" })}
               startAdornment={
                 <InputAdornment position="start">
                   <i
-                    style={{ color: "white", fontSize: 18, paddingRight: 5 }}
+                    style={{
+                      color: errors.id ? "red" : "white",
+                      fontSize: 18,
+                      paddingRight: 5,
+                    }}
                     className="flaticon-user"
                   />
                 </InputAdornment>
@@ -66,10 +74,17 @@ function Login() {
               inputRef={register({ required: true })}
               className={classes.inputContainer}
               id="input-with-icon-adornment"
+              style={{
+                borderBottomColor: errors.password ? "red" : "white",
+              }}
               startAdornment={
                 <InputAdornment position="start">
                   <i
-                    style={{ color: "white", fontSize: 18, paddingRight: 5 }}
+                    style={{
+                      color: errors.password ? "red" : "white",
+                      fontSize: 18,
+                      paddingRight: 5,
+                    }}
                     className="flaticon-lock"
                   />
                 </InputAdornment>

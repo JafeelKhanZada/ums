@@ -9,6 +9,7 @@ function TodoList() {
       xs={4}
       style={{
         padding: theme.spacing(2),
+        paddingRight: 0,
         paddingTop: 0,
         borderRight: 10,
       }}

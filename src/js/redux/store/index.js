@@ -5,13 +5,12 @@ import sagaMiddleware from "redux-saga";
 import thunk from "redux-thunk";
 import { RootSaga } from "../saga/rootSaga";
 import "regenerator-runtime/runtime";
-const createSagaMiddleware = sagaMiddleware();
 const store = createStore(
   createReducer(),
   {},
-  compose(applyMiddleware(logger, createSagaMiddleware, thunk))
+  compose(applyMiddleware(logger, thunk))
 );
-createSagaMiddleware.run(RootSaga);
+// createSagaMiddleware.run(RootSaga);
 store.asyncReducers = {};
 export const injectReducer = (key, reducer) => {
   if (store.asyncReducers[key]) {
