@@ -24,6 +24,7 @@
     "react-scripts": "3.4.1",
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
+    "react-table-v6": "^6.8.6",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3",

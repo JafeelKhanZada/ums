@@ -6,9 +6,13 @@ import Card from "../Common/Card/";
 import Graph from "./Attendance/";
 import Todo from "./TodoList/";
 import useStyle from "./store/Assets/Home";
+import Courses from "./EnrollCourses/";
+import Fees from "./StudentFess/";
 import { withReducer } from "../../redux/withReducer";
+import { useTheme } from "@material-ui/core/styles";
 function Home() {
   const style = useStyle();
+  const theme = useTheme();
   return (
     <React.Fragment>
       <Header>
@@ -45,8 +49,10 @@ function Home() {
           color="#11CDEF"
         />
       </Header>
-      <Grid container className={style.container}>
+      <Grid container spacing={3} className={style.container}>
         <Graph />
+        <Fees />
+        <Courses />
         <Todo />
       </Grid>
     </React.Fragment>

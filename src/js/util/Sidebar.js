@@ -12,15 +12,17 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Router from "./Sidebar.router";
+import StudentRoute from "./Sidebar.router.student";
+import TeacherRoute from "./Sidebar.router.teacher";
 import * as Action from "../redux/actions";
 const drawerWidth = 240;
 export default function MiniDrawer(props) {
   const dispatch = useDispatch();
-  const { auth } = useSelector(({ Authentication }) => Authentication);
+  const { auth, role } = useSelector(({ Authentication }) => Authentication);
   const val = useLocation();
   const history = useHistory();
   const [location, setLocation] = useState(null);
+  const [Router, setRouter] = useState([]);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -33,6 +35,13 @@ export default function MiniDrawer(props) {
   const handleDrawerClose = () => {
     setOpen(!open);
   };
+  useEffect(() => {
+    if (role === "student") {
+      setRouter(StudentRoute);
+    } else {
+      setRouter(TeacherRoute);
+    }
+  }, [role]);
   useEffect(() => {
     if (val.pathname !== location) {
       setLocation(val.pathname);

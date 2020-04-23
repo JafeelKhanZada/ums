@@ -2,6 +2,7 @@ import * as Action from "../constant";
 const initState = {
   auth: false,
   payload: null,
+  role: "teacher",
 };
 const reducer = (state = initState, action) => {
   switch (action.type) {

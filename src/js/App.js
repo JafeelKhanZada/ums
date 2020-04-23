@@ -6,7 +6,7 @@ import * as Theme from "./util/Theme";
 import { Alert } from "@material-ui/lab";
 import CheckIcon from "@material-ui/icons/Check";
 import { useSelector } from "react-redux";
-import "./style.css";
+import "./Styles.scss";
 function App() {
   const classes = useStyles();
   const data = useSelector((state) => state);

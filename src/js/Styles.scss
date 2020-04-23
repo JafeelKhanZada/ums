@@ -1,0 +1,48 @@
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  font-size: inherit;
+  margin-left: inherit;
+}
+* {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+div.ReactTable {
+  background-color: white;
+  font-family: Poppins;
+  border: none;
+  .rt-table {
+    .-header {
+      background-color: #f1f3f9;
+      box-shadow: none;
+      .rt-tr {
+        padding: 10px 0px 12px 10px;
+        .rt-th {
+          border: none;
+          color: #8898aa;
+          font-weight: 600;
+          font-size: 11px;
+          text-align: left;
+        }
+      }
+    }
+    .rt-tbody {
+      .rt-tr-group {
+        .rt-tr {
+          border: none;
+          .rt-td {
+            border: none;
+            padding: 13px 0 13px 13px;
+          }
+        }
+      }
+    }
+  }
+}
+body {
+  font-family: Poppins;
+}

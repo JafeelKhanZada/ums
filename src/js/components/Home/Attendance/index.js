@@ -54,26 +54,24 @@ const Statistic = () => {
   };
   return (
     <React.Fragment>
-      <Grid item xs={12} sm={12} md={8}>
+      <Grid item xs={12} sm={12} md={6}>
         <Paper
           elevation={1}
           style={{ padding: theme.spacing(3), borderRadius: 12 }}
         >
-          <div style={{ marginBottom: 20 }}>
+          <div
+            style={{
+              paddingBottom: theme.spacing(3),
+            }}
+          >
             <Typography
-              style={{
-                fontFamily: theme.palette.text.fontFamily,
-                marginBottom: -10,
-              }}
-              variant="overline"
+              style={{ color: "#8898AA", fontSize: 9 }}
+              variant="outline"
             >
               OVERVIEW
             </Typography>
             <Typography
-              style={{
-                fontFamily: theme.palette.text.fontFamily,
-                fontWeight: 600,
-              }}
+              style={{ fontWeight: 700, fontFamily: "Poppins" }}
               variant="h6"
             >
               Attendance
@@ -112,7 +110,7 @@ const Statistic = () => {
                   letterSpacing: 1,
                 }}
               >
-                >= 80%
+                Safe
               </p>
             </div>
             <div
@@ -139,7 +137,7 @@ const Statistic = () => {
                   letterSpacing: 1,
                 }}
               >
-                {`< 70%`}
+                Warning
               </p>
             </div>
             <div
@@ -166,7 +164,7 @@ const Statistic = () => {
                   letterSpacing: 1,
                 }}
               >
-                {`< 50%`}
+                Drop
               </p>
             </div>
           </div>
@@ -199,7 +197,7 @@ const Statistic = () => {
                       bottom: 0,
                       left: 0,
                     },
-                    barPercentage: 0.6,
+                    barPercentage: 0.8,
                     gridLines: {
                       lineWidth: 0.5,
                       offsetGridLines: false,
@@ -228,6 +226,7 @@ const Statistic = () => {
                 ],
               },
             }}
+            height={203}
             data={state.Data}
           />
         </Paper>
