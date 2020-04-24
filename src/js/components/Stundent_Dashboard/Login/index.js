@@ -10,7 +10,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import * as Action from "../../redux/actions";
+import * as Action from "../../../redux/actions";
 function Login() {
   const classes = style();
   const dispatch = useDispatch();
