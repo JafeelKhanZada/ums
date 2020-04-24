@@ -1,10 +1,12 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
+import useStyle from "../store/Assets/Home";
 import { Bar } from "react-chartjs-2";
 import { Grid, Paper, Typography } from "@material-ui/core";
 const data = [90, 75, 50, 90, 100];
 const Statistic = () => {
   const theme = useTheme();
+  const classes= useStyle();
   const state = {
     Data: {
       labels: ["SE", "CA", "ADV COP", "WEB APP", "DATABASE"],
@@ -57,113 +59,50 @@ const Statistic = () => {
       <Grid item xs={12} sm={12} md={6}>
         <Paper
           elevation={1}
-          style={{ padding: theme.spacing(3), borderRadius: 12 }}
+          className={classes.Attendance_paper}
         >
           <div
-            style={{
-              paddingBottom: theme.spacing(3),
-            }}
+           className={classes.Attendance_paper_div}
           >
             <Typography
-              style={{ color: "#8898AA", fontSize: 9 }}
+              className={classes.Attendance_paper_heading1}
               variant="outline"
             >
               OVERVIEW
             </Typography>
             <Typography
-              style={{ fontWeight: 700, fontFamily: "Poppins" }}
+              className={classes.Attendance_paper_heading2}
               variant="h6"
             >
               Attendance
             </Typography>
           </div>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: 10,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: 20,
-              }}
-            >
-              <div
-                style={{
-                  width: 20,
-                  height: 10,
-                  backgroundColor: theme.palette.attendance.success,
-                  borderRadius: 5,
-                }}
-              />
-              <p
-                style={{
-                  fontFamily: theme.palette.text.fontFamily,
-                  marginLeft: 10,
-                  color: theme.palette.text.subHead,
-                  letterSpacing: 1,
-                }}
-              >
+          <div className={classes.Attendance_Second_div} >
+            <div className={classes.Attendance_Second_div_Align_div} >
+              <div className={classes.Attendance_Second_div_Color_div} style={{backgroundColor: theme.palette.attendance.success}}/>
+              <p className={classes.Attendance_Second_div_Color_div_p}>
                 Safe
               </p>
             </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: 20,
-              }}
-            >
+            <div className={classes.Attendance_Second_div_Align_div}>
               <div
                 style={{
-                  width: 20,
-                  height: 10,
                   backgroundColor: theme.palette.attendance.warning,
-                  borderRadius: 5,
                 }}
+                className={classes.Attendance_Second_div_Color_div}
               />
-              <p
-                style={{
-                  fontFamily: theme.palette.text.fontFamily,
-                  marginLeft: 10,
-                  color: theme.palette.text.subHead,
-                  letterSpacing: 1,
-                }}
-              >
+              <p className={classes.Attendance_Second_div_Color_div_p}>
                 Warning
               </p>
             </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: 20,
-              }}
-            >
+            <div className={classes.Attendance_Second_div_Align_div}>
               <div
                 style={{
-                  width: 20,
-                  height: 10,
                   backgroundColor: theme.palette.attendance.danger,
-                  borderRadius: 5,
                 }}
+                className={classes.Attendance_Second_div_Color_div}
               />
-              <p
-                style={{
-                  fontFamily: theme.palette.text.fontFamily,
-                  marginLeft: 10,
-                  color: theme.palette.text.subHead,
-                  letterSpacing: 1,
-                }}
-              >
+              <p className={classes.Attendance_Second_div_Color_div_p}>
                 Drop
               </p>
             </div>

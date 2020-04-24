@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import useStyle from '../store/Assets/Home';
 import Table from "../../Common/Table";
 function Fees(props) {
   const theme = useTheme();
@@ -8,27 +9,20 @@ function Fees(props) {
   return (
     <Grid item xs={12} sm={12} md={6}>
       <Paper
-        style={{
-          paddingTop: theme.spacing(3),
-          borderRadius: 12,
-          overflow: "hidden",
-        }}
+        className={classes.Student_fee_heading}
         elevation={1}
       >
         <div
-          style={{
-            paddingLeft: theme.spacing(2),
-            paddingBottom: theme.spacing(3),
-          }}
+          className={classes.Student_fee_heading_div}
         >
           <Typography
-            style={{ color: "#8898AA", fontSize: 9 }}
+            className={classes.Student_fee_heading_div_typo1}
             variant="outline"
           >
             OVERVIEW
           </Typography>
           <Typography
-            style={{ fontWeight: 700, fontFamily: "Poppins" }}
+             className={classes.Student_fee_heading_div_typ2}
             variant="h6"
           >
             Student Fees
@@ -37,28 +31,20 @@ function Fees(props) {
         <Table columns={columns} data={[]} />
       </Paper>
       <Paper
-        style={{
-          marginTop: 10,
-          paddingTop: theme.spacing(1),
-          borderRadius: 12,
-          overflow: "hidden",
-        }}
+        className={classes.Student_fee_second_div}
         elevation={1}
       >
         <div
-          style={{
-            paddingLeft: theme.spacing(3),
-            paddingBottom: theme.spacing(2),
-          }}
+         className={classes.Student_fee_second_div_main_div}
         >
           <Typography
-            style={{ color: "#8898AA", fontSize: 9 }}
+            className={classes.Student_fee_second_div_main_div_typo1}
             variant="outline"
           >
             IMPORTANT
           </Typography>
           <Typography
-            style={{ fontWeight: 700, fontFamily: "Poppins" }}
+           className={classes.Student_fee_second_div_main_div_typo2}
             variant="h6"
           >
             Notes
@@ -70,25 +56,18 @@ function Fees(props) {
               <div className={classes.bullet}></div>
               <Typography
                 variant="subtitle2"
-                style={{
-                  fontWeight: 700,
-                  color: "#8898AA",
-                  fontFamily: "Poppins",
-                  marginLeft: 10,
-                }}
+                className={
+                  classes.Student_fee_second_div_main_div_content1_h
+                }
               >
                 Fees Calculation :
               </Typography>
             </div>
             <Typography
               variant="subtitle2"
-              style={{
-                fontWeight: 600,
-                color: theme.palette.attendance.danger,
-                fontFamily: "Poppins",
-                marginLeft: 20,
-                fontSize: 12,
-              }}
+              className={
+                classes.Student_fee_second_div_main_div_content1_p
+              }
             >
               (Misc fee per course * No. of Enrolled courses) + (Per course
               after discount fee * No. of courses)
@@ -99,25 +78,14 @@ function Fees(props) {
               <div className={classes.bullet}></div>
               <Typography
                 variant="subtitle2"
-                style={{
-                  fontWeight: 700,
-                  color: "#8898AA",
-                  fontFamily: "Poppins",
-                  marginLeft: 10,
-                }}
+                className={classes.Student_fee_second_div_main_div_content2_h}
               >
                 Fees Calculation : (In case of repeat course)
               </Typography>
             </div>
             <Typography
               variant="subtitle2"
-              style={{
-                fontWeight: 600,
-                color: theme.palette.attendance.danger,
-                fontFamily: "Poppins",
-                marginLeft: 20,
-                fontSize: 12,
-              }}
+              className={classes.Student_fee_second_div_main_div_content2_p}
             >
               (Misc fee per course * No. of courses) + (Per course WITHOUT
               discount fee * No. of courses)
@@ -129,33 +97,7 @@ function Fees(props) {
   );
 }
 export default Fees;
-const useStyle = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-    paddingBottom: theme.spacing(2),
-  },
-  Inner: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-  },
-  InnerContent: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  bullet: {
-    width: 12,
-    height: 12,
-    backgroundColor: "black",
-    borderRadius: "50%",
-  },
-}));
+
 const columns = [
   {
     Header: "Fees Type",

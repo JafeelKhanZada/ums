@@ -2,12 +2,12 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import Reducer from "./store/reducer";
 import Header from "../Common/Header";
-import Card from "../Common/Card/";
-import Graph from "./Attendance/";
-import Todo from "./TodoList/";
+import Card from "../Common/Card;
+import Graph from "./Attendance";
+import Todo from "./TodoList";
 import useStyle from "./store/Assets/Home";
-import Courses from "./EnrollCourses/";
-import Fees from "./StudentFess/";
+import Courses from "./EnrollCourses";
+import Fees from "./StudentFess";
 import { withReducer } from "../../redux/withReducer";
 import { useTheme } from "@material-ui/core/styles";
 function Home() {

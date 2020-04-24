@@ -23,7 +23,7 @@ function Login() {
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={4} className={classes.Login}>
-        <img src="./logo.png" className={classes.logo} />
+        <img src="./logo.png" className={classes.logo} alt="img" />
         <form className={classes.form}>
           <FormControl
             style={{
@@ -126,12 +126,12 @@ function Login() {
           <hr style={{ width: "40%", borderBottom: 1 }} />
         </div>
         <Button className={classes.button1}>
-          <img src="./google.png" style={{ marginRight: 15 }} />
+          <img src="./google.png" style={{ marginRight: 15 }} alt="img" />
           Continue With Google
         </Button>
       </Grid>
       <Grid item xs={12} sm={12} md={8}>
-        <img style={{ width: "100%" }} src="./slider.png" />
+        <img style={{ width: "100%" }} src="./slider.png" alt="img"/>
       </Grid>
     </Grid>
   );
