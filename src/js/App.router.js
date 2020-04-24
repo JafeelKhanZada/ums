@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import SideBar from "./util/Sidebar";
 import * as Action from "../js/redux/actions";
 const AsynHome = Loadable({
-  loader: () => import("./components/Stundent_Dashboard/Home/Home"),
+  loader: () => import("./components/Home/Home"),
   loading: () => <div>Loading......</div>,
 });
 const AsyncLogin = Loadable({
-  loader: () => import("./components/Stundent_Dashboard/Login"),
+  loader: () => import("./components/Login/"),
   loading: () => <div>Loading......</div>,
 });
 const Router = () => {

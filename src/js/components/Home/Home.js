@@ -1,18 +1,14 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Reducer from "./store/reducer";
-import Header from "../../Common/Header";
-import Card from "../../Common/Card";
-import Graph from "./Attendance";
-import Todo from "./TodoList";
+import Header from "../Common/Header";
+import Card from "../Common/Card/";
+import Graph from "./Attendance/";
+import Todo from "./TodoList/";
 import useStyle from "./store/Assets/Home";
 import Courses from "./EnrollCourses";
 import Fees from "./StudentFess";
-<<<<<<< HEAD:src/js/components/Home/index.js
 import { withReducer } from "../../redux/withReducer";
-=======
-import { withReducer } from "../../../redux/withReducer";
->>>>>>> 0b07a40ac7bab7a52416a4c3439d2585307fcbca:src/js/components/Stundent_Dashboard/Home/Home.js
 import { useTheme } from "@material-ui/core/styles";
 function Home() {
   const style = useStyle();

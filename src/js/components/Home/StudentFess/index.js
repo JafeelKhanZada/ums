@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
-import Table from "../../../Common/Table";
+import Table from "../../Common/Table";
 function Fees(props) {
   const theme = useTheme();
   const classes = useStyle();

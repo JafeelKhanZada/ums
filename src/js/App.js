@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Router from "./App.router.teacher";
+import Router from "./App.router";
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
 import { Snackbar } from "@material-ui/core";
 import * as Theme from "./util/Theme";
