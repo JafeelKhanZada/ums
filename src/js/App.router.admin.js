@@ -3,13 +3,13 @@ import Loadable from "react-loadable";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "./util/Sidebar";
-import * as Action from "../js/redux/actions";
+import * as Action from "./redux/actions";
 const AsynHome = Loadable({
-  loader: () => import("./components/Home/Home"),
+  loader: () => import("./components/Student/Home/Student"),
   loading: () => <div>Loading......</div>,
 });
 const AsyncLogin = Loadable({
-  loader: () => import("./components/Login/"),
+  loader: () => import("./components/Student/Login"),
   loading: () => <div>Loading......</div>,
 });
 const Router = () => {
@@ -23,7 +23,7 @@ const Router = () => {
       <SideBar>
         <Switch>
           <Route
-            path="/Student"
+            path="/Home"
             exact
             render={() =>
               auth === true ? <AsynHome /> : <Redirect to="/login" />
@@ -32,7 +32,7 @@ const Router = () => {
           <Route
             path="/Login"
             render={() =>
-              auth === false ? <AsyncLogin /> : <Redirect to="/Student" />
+              auth === false ? <AsyncLogin /> : <Redirect to="/Home" />
             }
           />
           <Route

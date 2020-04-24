@@ -1,19 +1,13 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
 import Table from "../../../Common/Table";
+import useStyle from "../store/Assets/Home";
 function Fees(props) {
-  const theme = useTheme();
   const classes = useStyle();
   return (
     <Grid item xs={12} sm={12} md={6}>
-      <Paper
-        className={classes.Student_fee_heading}
-        elevation={1}
-      >
-        <div
-          className={classes.Student_fee_heading_div}
-        >
+      <Paper className={classes.Student_fee_heading} elevation={1}>
+        <div className={classes.Student_fee_heading_div}>
           <Typography
             className={classes.Student_fee_heading_div_typo1}
             variant="outline"
@@ -21,7 +15,7 @@ function Fees(props) {
             OVERVIEW
           </Typography>
           <Typography
-             className={classes.Student_fee_heading_div_typ2}
+            className={classes.Student_fee_heading_div_typ2}
             variant="h6"
           >
             Student Fees
@@ -29,13 +23,8 @@ function Fees(props) {
         </div>
         <Table columns={columns} data={[]} />
       </Paper>
-      <Paper
-        className={classes.Student_fee_second_div}
-        elevation={1}
-      >
-        <div
-         className={classes.Student_fee_second_div_main_div}
-        >
+      <Paper className={classes.Student_fee_second_div} elevation={1}>
+        <div className={classes.Student_fee_second_div_main_div}>
           <Typography
             className={classes.Student_fee_second_div_main_div_typo1}
             variant="outline"
@@ -43,7 +32,7 @@ function Fees(props) {
             IMPORTANT
           </Typography>
           <Typography
-           className={classes.Student_fee_second_div_main_div_typo2}
+            className={classes.Student_fee_second_div_main_div_typo2}
             variant="h6"
           >
             Notes
@@ -55,18 +44,14 @@ function Fees(props) {
               <div className={classes.bullet}></div>
               <Typography
                 variant="subtitle2"
-                className={
-                  classes.Student_fee_second_div_main_div_content1_h
-                }
+                className={classes.Student_fee_second_div_main_div_content1_h}
               >
                 Fees Calculation :
               </Typography>
             </div>
             <Typography
               variant="subtitle2"
-              className={
-                classes.Student_fee_second_div_main_div_content1_p
-              }
+              className={classes.Student_fee_second_div_main_div_content1_p}
             >
               (Misc fee per course * No. of Enrolled courses) + (Per course
               after discount fee * No. of courses)

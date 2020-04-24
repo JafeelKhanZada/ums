@@ -10,7 +10,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import * as Action from "../../redux/actions";
+import * as Action from "../../../redux/actions";
 function Login() {
   const classes = style();
   const dispatch = useDispatch();
@@ -131,7 +131,7 @@ function Login() {
         </Button>
       </Grid>
       <Grid item xs={12} sm={12} md={8}>
-        <img style={{ width: "100%" }} src="./slider.png" alt="img"/>
+        <img style={{ width: "100%" }} src="./slider.png" alt="img" />
       </Grid>
     </Grid>
   );

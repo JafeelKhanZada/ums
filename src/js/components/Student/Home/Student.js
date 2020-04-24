@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import Reducer from "./store/reducer";
+import Reducer from "./store/reducer/";
 import Header from "../../Common/Header";
 import Card from "../../Common/Card";
 import Graph from "./Attendance";
@@ -9,10 +9,8 @@ import useStyle from "./store/Assets/Home";
 import Courses from "./EnrollCourses";
 import Fees from "./StudentFess";
 import { withReducer } from "../../../redux/withReducer";
-import { useTheme } from "@material-ui/core/styles";
-function Home() {
+function Student() {
   const style = useStyle();
-  const theme = useTheme();
   return (
     <React.Fragment>
       <Header>
@@ -58,4 +56,4 @@ function Home() {
     </React.Fragment>
   );
 }
-export default withReducer("Home", Reducer)(Home);
+export default withReducer("Student", Reducer)(Student);
