@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyle = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.primary.main,
+    paddingBottom: 20,
   },
   Heading: {
     fontFamily: theme.palette.text.fontFamily,

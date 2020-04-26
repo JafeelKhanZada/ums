@@ -8,6 +8,8 @@ import Todo from "./TodoList";
 import useStyle from "./store/Assets/Home";
 import Courses from "./EnrollCourses";
 import Fees from "./StudentFess";
+import AssesmentBar from "./AssesmentBar";
+import Assessment from "./AssessmentTable";
 import { withReducer } from "../../../redux/withReducer";
 function Student() {
   const style = useStyle();
@@ -52,6 +54,8 @@ function Student() {
         <Fees />
         <Courses />
         <Todo />
+        <AssesmentBar />
+        <Assessment />
       </Grid>
     </React.Fragment>
   );

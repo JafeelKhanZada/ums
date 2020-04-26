@@ -12,8 +12,12 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Collapse from "@material-ui/core/Collapse";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 import StudentRoute from "./Sidebar.router.student";
 import TeacherRoute from "./Sidebar.router.teacher";
+import SuperAdminRouter from "./Sidebar.router.super.admin";
 import * as Action from "../redux/actions";
 const drawerWidth = 240;
 export default function MiniDrawer(props) {
@@ -26,21 +30,26 @@ export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [toggle, setToggle] = useState(null);
+  const handleDropDown = (e) => (e !== toggle ? setToggle(e) : setToggle(null));
   const logout = () => {
     dispatch(Action.LogOut());
   };
   const handleLocation = (e) => {
-    history.push(e);
+    if (e !== false) {
+      history.push(e);
+    }
   };
   const handleDrawerClose = () => {
     setOpen(!open);
   };
   useEffect(() => {
-    if (role === "student") {
-      setRouter(StudentRoute);
-    } else {
-      setRouter(TeacherRoute);
-    }
+    // if (role === "student") {
+    //   setRouter(StudentRoute);
+    // } else {
+    //   setRouter(TeacherRoute);
+    // }
+    setRouter(SuperAdminRouter);
   }, [role]);
   useEffect(() => {
     if (val.pathname !== location) {
@@ -94,92 +103,152 @@ export default function MiniDrawer(props) {
         </animated.div>
         <List className={classes.List} style={{ marginTop: open ? 10 : 0 }}>
           {Router.map((text, index) => (
-            <ListItem
-              className={[classes.ListItem]}
-              onClick={() => handleLocation(text.url)}
-              style={{
-                width: !open ? "90%" : "100%",
-                backgroundColor:
-                  location === text.url
-                    ? theme.palette.secondary.light
-                    : "inherit",
-              }}
-              button
-              key={index}
-            >
-              <i
-                className={text.icon}
+            <>
+              <ListItem
+                className={[classes.ListItem]}
+                onClick={() => handleLocation(text.url)}
                 style={{
-                  ...text.iconStyle,
-                  marginLeft: !open ? -1 : 0,
-                  marginRight: !open ? -1 : text.iconStyle.marginRight,
-                  color:
+                  width: !open ? "90%" : "100%",
+                  backgroundColor:
                     location === text.url
-                      ? "white"
-                      : theme.palette.primary.main,
+                      ? theme.palette.secondary.light
+                      : "inherit",
+
+                  marginLeft: !open ? 3.5 : 0,
                 }}
-              />
-              {open ? (
-                <ListItemText
-                  primary={
-                    <Typography
-                      className={classes.ListText}
-                      style={{
-                        fontWeight: 500,
-                        color:
-                          location === text.url
-                            ? "white"
-                            : theme.palette.primary.main,
-                      }}
-                      variant="caption"
-                      display="inline"
-                    >
-                      {text.name}
-                    </Typography>
-                  }
+                button
+                key={index}
+              >
+                <i
+                  className={text.icon}
+                  style={{
+                    ...text.iconStyle,
+                    marginLeft: !open ? -1 : 0,
+                    marginRight: !open ? -1 : text.iconStyle.marginRight,
+                    color:
+                      location === text.url ||
+                      text?.children?.find((val) => val.text === location)
+                        ?.url === location
+                        ? "white"
+                        : theme.palette.primary.main,
+                  }}
                 />
-              ) : (
-                <React.Fragment />
-              )}
-            </ListItem>
+                {open ? (
+                  <>
+                    <ListItemText
+                      primary={
+                        <Typography
+                          className={classes.ListText}
+                          style={{
+                            fontWeight: 500,
+                            color:
+                              location === text.url
+                                ? "white"
+                                : theme.palette.primary.main,
+                          }}
+                          variant="caption"
+                          display="inline"
+                        >
+                          {text.name}
+                        </Typography>
+                      }
+                    />
+                    <IconButton
+                      style={{ padding: 0 }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleDropDown(text.url);
+                      }}
+                    >
+                      {text?.children && text.children.length > 0 ? (
+                        toggle === text.url ? (
+                          <ExpandLess
+                            style={{
+                              color:
+                                location === text.url
+                                  ? "white"
+                                  : theme.palette.primary.main,
+                            }}
+                          />
+                        ) : (
+                          <ExpandMore
+                            style={{
+                              color:
+                                location === text.url
+                                  ? "white"
+                                  : theme.palette.primary.main,
+                            }}
+                          />
+                        )
+                      ) : null}
+                    </IconButton>
+                  </>
+                ) : (
+                  <React.Fragment />
+                )}
+              </ListItem>
+
+              <Collapse
+                in={open && toggle === text.url}
+                timeout="auto"
+                unmountOnExit
+              >
+                {text?.children?.map((value, keys) => {
+                  return (
+                    <ListItem
+                      className={[classes.ListItem, classes.nested]}
+                      onClick={() => handleLocation(value.url)}
+                      style={{
+                        width: !open ? "50%" : "100%",
+                        backgroundColor:
+                          location === value.url
+                            ? theme.palette.secondary.light
+                            : "inherit",
+                      }}
+                      button
+                      key={keys}
+                    >
+                      <i
+                        className={value.icon}
+                        style={{
+                          ...value.iconStyle,
+                          marginLeft: !open ? -1 : 0,
+                          marginRight: !open ? -1 : value.iconStyle.marginRight,
+                          color:
+                            location === value.url
+                              ? "white"
+                              : theme.palette.primary.main,
+                        }}
+                      />
+                      {open ? (
+                        <ListItemText
+                          primary={
+                            <Typography
+                              className={classes.ListText}
+                              style={{
+                                fontWeight: 500,
+                                color:
+                                  location === value.url
+                                    ? "white"
+                                    : theme.palette.primary.main,
+                              }}
+                              variant="caption"
+                              display="inline"
+                            >
+                              {value.name}
+                            </Typography>
+                          }
+                        />
+                      ) : (
+                        <React.Fragment />
+                      )}
+                    </ListItem>
+                  );
+                })}
+              </Collapse>
+            </>
           ))}
-          <ListItem
-            className={[classes.ListItem]}
-            onClick={() => logout()}
-            style={{
-              width: !open ? "90%" : "100%",
-            }}
-            button
-          >
-            <i
-              className={"flaticon-logout"}
-              style={{
-                fontSize: 20,
-                width: 40,
-                marginLeft: !open ? 0 : 2,
-                marginRight: !open ? -1 : 5,
-                color: theme.palette.primary.main,
-              }}
-            />
-            {open ? (
-              <ListItemText
-                primary={
-                  <Typography
-                    className={classes.ListText}
-                    style={{
-                      fontWeight: 500,
-                    }}
-                    variant="caption"
-                    display="inline"
-                  >
-                    Logout
-                  </Typography>
-                }
-              />
-            ) : (
-              <React.Fragment />
-            )}
-          </ListItem>
         </List>
       </Drawer>
       <main className={clsx(classes.content, { [classes.contentShift]: open })}>
@@ -228,6 +297,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  nested: {
+    marginLeft: theme.spacing(2),
+  },
   drawerClose: {
     borderRight: 0,
     transition: theme.transitions.create("width", {
@@ -271,10 +343,6 @@ const useStyles = makeStyles((theme) => ({
     width: "96%",
     overflow: "hidden",
     marginTop: 20,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
   },
   ListItem: {
     borderRadius: "5px",
@@ -287,6 +355,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  ListItemChildren: {},
   ListText: {
     fontFamily: theme.palette.text.fontFamily,
     fontSize: 12,

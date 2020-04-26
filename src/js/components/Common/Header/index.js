@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useStyle from "../store/assets/Header";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Nav from "../Nav/";
-// import BreadCrumbs from "../Breadcrumbs/";
+import { useLocation } from "react-router-dom";
 import { Grid, Typography } from "@material-ui/core";
 function Header(props) {
   const classes = useStyle();
+  const path = useLocation().pathname;
+  const [header, setHeader] = useState(null);
+  useEffect(() => {
+    if (path) {
+      const value = path.split("/");
+      const pathname = value[1].split("-");
+      let title = "";
+      pathname.map((v, k) => {
+        title += v + " ";
+      });
+      console.log(title);
+      setHeader(title);
+    }
+  }, [path]);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -13,7 +27,7 @@ function Header(props) {
         <Nav />
         <Grid item xs={12}>
           <Typography className={classes.Heading} variant="h5">
-            Home
+            {header}
           </Typography>
         </Grid>
         {props.children}

@@ -5,11 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import SideBar from "./util/Sidebar";
 import * as Action from "./redux/actions";
 const AsynHome = Loadable({
-  loader: () => import("./components/Student/Home/Student"),
+  loader: () => import("./components/Super Admin/Home"),
   loading: () => <div>Loading......</div>,
 });
 const AsyncLogin = Loadable({
   loader: () => import("./components/Student/Login"),
+  loading: () => <div>Loading......</div>,
+});
+const AsyncStudent = Loadable({
+  loader: () => import("./components/Super Admin/Student/AddStudent"),
   loading: () => <div>Loading......</div>,
 });
 const Router = () => {
@@ -32,13 +36,13 @@ const Router = () => {
           <Route
             path="/Login"
             render={() =>
-              auth === false ? <AsyncLogin /> : <Redirect to="/Home" />
+              auth === false ? <AsyncLogin /> : <Redirect to="/Add-Student" />
             }
           />
           <Route
-            path="*"
+            path="/Add-Student"
             render={() =>
-              auth === true ? <AsynHome /> : <Redirect to="/login" />
+              auth === true ? <AsyncStudent /> : <Redirect to="/Add-Student" />
             }
           />
         </Switch>

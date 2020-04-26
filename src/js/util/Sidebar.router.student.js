@@ -21,6 +21,30 @@ const SideBar = [
       marginRight: 5,
       marginLeft: -20,
     },
+    children: [
+      {
+        name: "Add/Drop Course", //Name of component display in sidebar
+        url: "/add-drop-course", //URL path of component
+        icon: "flaticon-add", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+      {
+        name: "Attendance Detail", //Name of component display in sidebar
+        url: "/attendance-detail", //URL path of component
+        icon: "flaticon-paper", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+    ],
   },
   {
     name: "Examination", //Name of component display in sidebar
