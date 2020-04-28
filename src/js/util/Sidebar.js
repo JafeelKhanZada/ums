@@ -35,8 +35,8 @@ export default function MiniDrawer(props) {
   const logout = () => {
     dispatch(Action.LogOut());
   };
-  const handleLocation = (e) => {
-    if (e !== false) {
+  const handleLocation = (e, bool) => {
+    if (bool !== false) {
       history.push(e);
     }
   };
@@ -106,11 +106,17 @@ export default function MiniDrawer(props) {
             <>
               <ListItem
                 className={[classes.ListItem]}
-                onClick={() => handleLocation(text.url)}
+                onClick={() => handleLocation(text.url, text.bool)}
                 style={{
                   width: !open ? "90%" : "100%",
+                  marginBottom: 5,
                   backgroundColor:
-                    location === text.url
+                    location === text.url ||
+                    text?.children?.find((v) => {
+                      if (v.url === location) {
+                        return true;
+                      }
+                    })
                       ? theme.palette.secondary.light
                       : "inherit",
 
@@ -127,8 +133,11 @@ export default function MiniDrawer(props) {
                     marginRight: !open ? -1 : text.iconStyle.marginRight,
                     color:
                       location === text.url ||
-                      text?.children?.find((val) => val.text === location)
-                        ?.url === location
+                      text?.children?.find((v) => {
+                        if (v.url === location) {
+                          return true;
+                        }
+                      })
                         ? "white"
                         : theme.palette.primary.main,
                   }}
@@ -142,7 +151,12 @@ export default function MiniDrawer(props) {
                           style={{
                             fontWeight: 500,
                             color:
-                              location === text.url
+                              location === text.url ||
+                              text?.children?.find((v) => {
+                                if (v.url === location) {
+                                  return true;
+                                }
+                              })
                                 ? "white"
                                 : theme.palette.primary.main,
                           }}
@@ -166,7 +180,12 @@ export default function MiniDrawer(props) {
                           <ExpandLess
                             style={{
                               color:
-                                location === text.url
+                                location === text.url ||
+                                text?.children?.find((v) => {
+                                  if (v.url === location) {
+                                    return true;
+                                  }
+                                })
                                   ? "white"
                                   : theme.palette.primary.main,
                             }}
@@ -175,7 +194,12 @@ export default function MiniDrawer(props) {
                           <ExpandMore
                             style={{
                               color:
-                                location === text.url
+                                location === text.url ||
+                                text?.children?.find((v) => {
+                                  if (v.url === location) {
+                                    return true;
+                                  }
+                                })
                                   ? "white"
                                   : theme.palette.primary.main,
                             }}
@@ -200,7 +224,7 @@ export default function MiniDrawer(props) {
                       className={[classes.ListItem, classes.nested]}
                       onClick={() => handleLocation(value.url)}
                       style={{
-                        width: !open ? "50%" : "100%",
+                        width: !open ? "100%" : "84%",
                         backgroundColor:
                           location === value.url
                             ? theme.palette.secondary.light

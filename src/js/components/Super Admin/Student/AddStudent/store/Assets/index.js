@@ -13,11 +13,12 @@ const useStyle = makeStyles((theme) => ({
   InputLabel: {
     // paddingLeft: theme.spacing(),
   },
-
+  Date: {
+    marginTop: 16.5,
+  },
   InputContainer: {
     width: "100%",
     fontFamily: theme.palette.text.fontFamily,
-    fontSize: 12,
   },
   radio: {
     width: "100px",

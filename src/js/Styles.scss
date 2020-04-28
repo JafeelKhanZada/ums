@@ -37,6 +37,7 @@ div.ReactTable {
           .rt-td {
             border: none;
             padding: 13px 0 13px 13px;
+            font-size: 12px;
           }
         }
       }
@@ -45,4 +46,35 @@ div.ReactTable {
 }
 body {
   font-family: Poppins;
+}
+.text-center {
+  text-align: center !important;
+}
+
+.pagination-bottom {
+  padding: 20px 20px 0 0 !important;
+  .-pagination {
+    border: none !important;
+    box-shadow: none !important;
+    justify-content: flex-end !important;
+    .-previous,
+    .-next {
+      flex: none !important;
+      button {
+        background-color: #226763;
+        color: white;
+      }
+    }
+    .-next {
+      width: 60px !important;
+    }
+    .-center {
+      width: 170px !important;
+      flex: none !important;
+      input {
+        width: 50px !important;
+        text-align: center;
+      }
+    }
+  }
 }
