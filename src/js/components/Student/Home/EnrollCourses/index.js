@@ -33,7 +33,12 @@ function Enroll(props) {
             Enrolled Courses
           </Typography>
         </div>
-        <Table columns={columns} data={[]} />
+        <Table
+          columns={columns}
+          data={[]}
+          showPagination={false}
+          showPaginationBottom={false}
+        />
       </Paper>
     </Grid>
   );

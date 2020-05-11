@@ -68,6 +68,7 @@ const useStyle = makeStyles((theme) => ({
   Attendance_paper: {
     padding: theme.spacing(3),
     borderRadius: 12,
+    height: "100%",
   },
   Attendance_paper_div: {
     paddingBottom: theme.spacing(3),

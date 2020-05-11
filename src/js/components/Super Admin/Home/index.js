@@ -1,48 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { withReducer } from "../../../redux/withReducer";
 import Header from "../../Common/Header";
 import Card from "../../Common/Card";
 import useStyle from "./store/Assets/index.js";
+import * as Action from "./store/action";
+import Reducer from "./store/reducer";
+import Chart from "./PieChart/";
 function Admin() {
+  const value = useSelector(({ Home }) => Home);
+  const dispatch = useDispatch();
   const style = useStyle();
+  const [card, SetCard] = useState(null);
+  useEffect(() => {
+    dispatch(Action.getDashboardCard());
+  }, []);
+  useEffect(() => {
+    if (value?.data) {
+      SetCard(value?.data);
+    }
+  }, [value]);
   return (
     <React.Fragment>
       <Header>
         <Card
-          head="Payment Dues"
-          value="0.00Rs"
-          icon="dollar"
-          b1="+3.48%"
-          b2="Last Semester"
-          color="#7764E4"
+          head="Total Student"
+          value={card?.STUDENT}
+          icon="humanpictos"
+          color="#F7DDB4"
         />
         <Card
-          head="Completed Courses"
-          value="10"
-          icon="college-graduation"
-          b1="+12%"
-          b2="Whole Course"
+          head="Total Admin"
+          value={card?.ADMIN}
+          icon="teamwork"
           color="#3C83F5"
         />
         <Card
-          head="Pending Assignment"
-          value="10"
-          icon="briefcase"
-          b1="+12:00 PM"
-          b2="Due Date"
+          head="Total Employee"
+          value={card?.EMPLOYEE}
+          icon="workers-team"
           color="#2DCE98"
         />
         <Card
-          head="CGPA"
-          value="3,65"
-          icon="music-black-vertical-bars"
-          b1="+1.5%"
-          b2="Last Semester"
+          head="Total Teacher"
+          value={card?.TEACHER}
+          icon="teacher"
           color="#11CDEF"
         />
       </Header>
-      <Grid container spacing={3} className={style.container}></Grid>
+      <Grid container spacing={3} className={style.container}>
+        <Chart />
+      </Grid>
     </React.Fragment>
   );
 }
-export default Admin;
+export default withReducer("Home", Reducer)(Admin);

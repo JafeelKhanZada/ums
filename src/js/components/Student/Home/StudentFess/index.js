@@ -21,7 +21,12 @@ function Fees(props) {
             Student Fees
           </Typography>
         </div>
-        <Table columns={columns} data={[]} />
+        <Table
+          columns={columns}
+          data={[]}
+          showPagination={false}
+          showPaginationBottom={false}
+        />
       </Paper>
       <Paper className={classes.Student_fee_second_div} elevation={1}>
         <div className={classes.Student_fee_second_div_main_div}>

@@ -1,43 +1,65 @@
-import React, { useState } from "react";
-import Router from "./App.router.super.admin";
-import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
-import { Snackbar } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import SuperAdminRouter from "./App.router.super.admin";
+import StudentRouter from "./App.router.student";
+import TeacherRouter from "./App.router.teacher";
+import AdminRouter from "./App.router.admin";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Loadable from "react-loadable";
+import * as Action from "./redux/actions";
 import * as Theme from "./util/Theme";
-import { Alert } from "@material-ui/lab";
-import CheckIcon from "@material-ui/icons/Check";
 import "./Styles.scss";
+const AsyncLogin = Loadable({
+  loader: () => import("./components/Login"),
+  loading: () => <div>Loading......</div>,
+});
 function App() {
-  const classes = useStyles();
-  const [State, setState] = useState({
-    show: false,
-    message: "",
-    type: "",
-  });
+  const data = useSelector(({ Authentication }) => Authentication);
+  const [auth, setAuth] = useState(false);
+  const [role, setRoles] = useState(null);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(Action.TokenVerify());
+  }, []);
+  useEffect(() => {
+    setAuth(data?.auth);
+    setRoles(data?.role);
+  }, [data]);
   return (
     <React.Fragment>
       <ThemeProvider theme={Theme.Light}>
-        <Router />
+        <BrowserRouter>
+          {role === "STUDENT" ? (
+            <StudentRouter />
+          ) : role === "SUPER_ADMIN" ? (
+            <SuperAdminRouter />
+          ) : role === "TEACHER" ? (
+            <TeacherRouter />
+          ) : role === "ADMIN" ? (
+            <AdminRouter />
+          ) : null}
+          <Route
+            path="/Login"
+            render={() =>
+              auth === false ? <AsyncLogin /> : <Redirect to="/Home" />
+            }
+          />
+          {!auth ? (
+            <Route
+              path="*"
+              render={() =>
+                auth === false ? (
+                  <Redirect to="/login" />
+                ) : (
+                  <Redirect to="/Home" />
+                )
+              }
+            />
+          ) : null}
+        </BrowserRouter>
       </ThemeProvider>
-      <div className={classes.root}>
-        <Snackbar
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-          open={State.show}
-          autoHideDuration={1000}
-        >
-          <Alert icon={<CheckIcon fontSize="inherit" />} severity={State.type}>
-            {State.message}
-          </Alert>
-        </Snackbar>
-      </div>
     </React.Fragment>
   );
 }
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    "& > * + *": {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 export default App;

@@ -6,7 +6,7 @@ import { Grid, Paper, Typography } from "@material-ui/core";
 const data = [90, 75, 50, 90, 100];
 const Statistic = () => {
   const theme = useTheme();
-  const classes= useStyle();
+  const classes = useStyle();
   const state = {
     Data: {
       labels: ["SE", "CA", "ADV COP", "WEB APP", "DATABASE"],
@@ -57,13 +57,8 @@ const Statistic = () => {
   return (
     <React.Fragment>
       <Grid item xs={12} sm={12} md={6}>
-        <Paper
-          elevation={1}
-          className={classes.Attendance_paper}
-        >
-          <div
-           className={classes.Attendance_paper_div}
-          >
+        <Paper elevation={1} className={classes.Attendance_paper}>
+          <div className={classes.Attendance_paper_div}>
             <Typography
               className={classes.Attendance_paper_heading1}
               variant="outline"
@@ -77,12 +72,16 @@ const Statistic = () => {
               Attendance
             </Typography>
           </div>
-          <div className={classes.Attendance_Second_div} >
-            <div className={classes.Attendance_Second_div_Align_div} >
-              <div className={classes.Attendance_Second_div_Color_div} style={{backgroundColor: theme.palette.attendance.success}}/>
-              <p className={classes.Attendance_Second_div_Color_div_p}>
-                Safe
-              </p>
+          <div
+            className={classes.Attendance_Second_div}
+            style={{ marginBottom: 50, marginTop: 20 }}
+          >
+            <div className={classes.Attendance_Second_div_Align_div}>
+              <div
+                className={classes.Attendance_Second_div_Color_div}
+                style={{ backgroundColor: theme.palette.attendance.success }}
+              />
+              <p className={classes.Attendance_Second_div_Color_div_p}>Safe</p>
             </div>
             <div className={classes.Attendance_Second_div_Align_div}>
               <div
@@ -102,9 +101,7 @@ const Statistic = () => {
                 }}
                 className={classes.Attendance_Second_div_Color_div}
               />
-              <p className={classes.Attendance_Second_div_Color_div_p}>
-                Drop
-              </p>
+              <p className={classes.Attendance_Second_div_Color_div_p}>Drop</p>
             </div>
           </div>
           <Bar
@@ -165,7 +162,7 @@ const Statistic = () => {
                 ],
               },
             }}
-            height={203}
+            height={210}
             data={state.Data}
           />
         </Paper>

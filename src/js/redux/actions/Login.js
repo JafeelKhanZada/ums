@@ -5,7 +5,7 @@ import * as Actions from "./index";
 export const login = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/student/login", payload)
+      .post("http://localhost:4000/api/auth/login", payload)
       .then((Res) => {
         if (Res.data) {
           console.log(Res.data.data);

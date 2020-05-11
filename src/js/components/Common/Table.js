@@ -3,6 +3,7 @@ import ReactTable from "react-table-v6";
 import { CircularProgress } from "@material-ui/core";
 import "react-table-v6/react-table.css";
 function Table(props) {
+  console.log(props);
   return (
     <>
       <ReactTable
@@ -16,10 +17,8 @@ function Table(props) {
           };
         }}
         loadingText={<CircularProgress />}
-        defaultPageSize={10}
-        showPagination={true}
+        defaultPageSize={5}
         showPaginationTop={false}
-        showPaginationBottom={true}
         showPageSizeOptions={false}
         manual // this would indicate that server side pagination has been enabled
         {...props}

@@ -4,11 +4,14 @@ import App from "./js/App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./js/redux/store";
+import { NotificationContainer } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 const Index = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
         <App />
+        <NotificationContainer />
       </Provider>
     </React.StrictMode>
   );

@@ -192,5 +192,77 @@ const SideBar = [
       },
     ],
   },
+  {
+    name: "Teachers", //Name of component display in sidebar
+    url: "/teacher", //URL path of component
+    icon: "flaticon-presentation", //Icon name of component
+    bool: false,
+    iconStyle: {
+      fontSize: 20,
+      marginRight: 5,
+      width: 40,
+      marginLeft: -20,
+    },
+    children: [
+      {
+        name: "Add Teacher", //Name of component display in sidebar
+        url: "/Add-Teacher", //URL path of component
+        icon: "flaticon-add", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+      {
+        name: "View Teacher", //Name of component display in sidebar
+        url: "/View-Teacher", //URL path of component
+        icon: "flaticon-eye", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+    ],
+  },
+  {
+    name: "Admin", //Name of component display in sidebar
+    url: "/admin", //URL path of component
+    icon: "flaticon-admin-ui",
+    bool: false,
+    iconStyle: {
+      fontSize: 20,
+      marginRight: 5,
+      width: 40,
+      marginLeft: -20,
+    },
+    children: [
+      {
+        name: "Add Admin", //Name of component display in sidebar
+        url: "/Add-Admin", //URL path of component
+        icon: "flaticon-add", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+      {
+        name: "View Admins", //Name of component display in sidebar
+        url: "/View-Admin", //URL path of component
+        icon: "flaticon-eye", //Icon name of component
+        iconStyle: {
+          fontSize: 20,
+          marginRight: 5,
+          width: 40,
+          marginLeft: -20,
+        },
+      },
+    ],
+  },
 ];
 export default SideBar;

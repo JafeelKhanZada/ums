@@ -18,6 +18,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import StudentRoute from "./Sidebar.router.student";
 import TeacherRoute from "./Sidebar.router.teacher";
 import SuperAdminRouter from "./Sidebar.router.super.admin";
+import AdminRouter from "./Sidebar.router.admin";
 import * as Action from "../redux/actions";
 const drawerWidth = 240;
 export default function MiniDrawer(props) {
@@ -34,6 +35,7 @@ export default function MiniDrawer(props) {
   const handleDropDown = (e) => (e !== toggle ? setToggle(e) : setToggle(null));
   const logout = () => {
     dispatch(Action.LogOut());
+    history.push("/login");
   };
   const handleLocation = (e, bool) => {
     if (bool !== false) {
@@ -44,12 +46,15 @@ export default function MiniDrawer(props) {
     setOpen(!open);
   };
   useEffect(() => {
-    // if (role === "student") {
-    //   setRouter(StudentRoute);
-    // } else {
-    //   setRouter(TeacherRoute);
-    // }
-    setRouter(SuperAdminRouter);
+    if (role === "STUDENT") {
+      setRouter(StudentRoute);
+    } else if (role === "SUPER_ADMIN") {
+      setRouter(SuperAdminRouter);
+    } else if (role === "TEACHER") {
+      setRouter(TeacherRoute);
+    } else {
+      setRouter(AdminRouter);
+    }
   }, [role]);
   useEffect(() => {
     if (val.pathname !== location) {
@@ -273,6 +278,42 @@ export default function MiniDrawer(props) {
               </Collapse>
             </>
           ))}
+          <ListItem
+            className={[classes.ListItem]}
+            onClick={logout}
+            style={{
+              width: !open ? "90%" : "100%",
+              marginBottom: 5,
+              marginLeft: !open ? 3.5 : 0,
+            }}
+            button
+          >
+            <i
+              className={"flaticon-logout"}
+              style={{
+                marginLeft: !open ? -1 : 0,
+                fontSize: 23,
+                width: 40,
+                marginRight: 5,
+                color: theme.palette.primary.main,
+              }}
+            />
+            <ListItemText
+              primary={
+                <Typography
+                  className={classes.ListText}
+                  style={{
+                    fontWeight: 500,
+                    opacity: !open ? 0 : 1,
+                  }}
+                  variant="caption"
+                  display="inline"
+                >
+                  Logout
+                </Typography>
+              }
+            />
+          </ListItem>
         </List>
       </Drawer>
       <main className={clsx(classes.content, { [classes.contentShift]: open })}>

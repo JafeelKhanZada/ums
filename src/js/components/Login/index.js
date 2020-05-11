@@ -10,7 +10,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import * as Action from "../../../redux/actions";
+import * as Action from "../../redux/actions";
 function Login() {
   const classes = style();
   const dispatch = useDispatch();
@@ -18,7 +18,6 @@ function Login() {
     mode: "onSubmit",
     reValidateMode: "onBlur",
   });
-  console.log(errors);
   const onSubmit = (data) => dispatch(Action.login(data));
   return (
     <Grid container>
@@ -36,19 +35,19 @@ function Login() {
           >
             <Input
               disableUnderline
-              placeholder="STUDENT ID"
+              placeholder="EMAIL"
               className={classes.inputContainer}
               id="input-with-icon-adornment"
-              name="id"
+              name="email"
               style={{
-                borderBottomColor: errors.id ? "red" : "white",
+                borderBottomColor: errors.email ? "red" : "white",
               }}
               inputRef={register({ required: true, message: "123" })}
               startAdornment={
                 <InputAdornment position="start">
                   <i
                     style={{
-                      color: errors.id ? "red" : "white",
+                      color: errors.email ? "red" : "white",
                       fontSize: 18,
                       paddingRight: 5,
                     }}
