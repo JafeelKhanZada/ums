@@ -3,7 +3,7 @@ import axios from "axios";
 export const postDepartmentInDepartment = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/program/insert", payload)
+      .post("/api/program/insert", payload)
       .then((res) => {
         console.log(res);
         if (!res.data.error) return true;
@@ -21,7 +21,7 @@ export const getBatch = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/batch/getBatch", obj)
+      .post("/api/batch/getBatch", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({

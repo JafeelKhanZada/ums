@@ -14,7 +14,7 @@ export const getBatch = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/batch/getBatch", obj)
+      .post("/api/batch/getBatch", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({

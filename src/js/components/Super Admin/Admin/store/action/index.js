@@ -10,7 +10,7 @@ export const getEmployee = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/employement/getData", obj)
+      .post("/api/employement/getData", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({
@@ -29,7 +29,7 @@ export const getRoles = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/roles/get", obj)
+      .post("/api/roles/get", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({
@@ -43,7 +43,7 @@ export const getRoles = (page, pageSize, id) => {
 export const addAdmin = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/admin/insert", payload)
+      .post("/api/admin/insert", payload)
       .then((res) => {
         return !res.data.error;
       });
@@ -57,7 +57,7 @@ export const getDepartmentDataInDepartment = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/program/getData", obj)
+      .post("/api/program/getData", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({

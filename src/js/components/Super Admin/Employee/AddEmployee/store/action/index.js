@@ -9,7 +9,7 @@ export const getProgram = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/program/getData", obj)
+      .post("/api/program/getData", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({
@@ -23,7 +23,7 @@ export const getProgram = (page, pageSize, id) => {
 export const postEmployeeInfo = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/employement/insert", payload)
+      .post("/api/employement/insert", payload)
       .then((res) => {
         console.log(res);
         if (!res.data.error) return true;

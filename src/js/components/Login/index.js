@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   FormControl,
@@ -14,16 +14,26 @@ import * as Action from "../../redux/actions";
 function Login() {
   const classes = style();
   const dispatch = useDispatch();
-  const { register, handleSubmit, errors } = useForm({
-    mode: "onSubmit",
+  const [disable, setDisable] = useState(false);
+  const { register, handleSubmit, errors, setError } = useForm({
+    mode: "onBlur",
     reValidateMode: "onBlur",
   });
-  const onSubmit = (data) => dispatch(Action.login(data));
+  const onSubmit = (data) => {
+    setDisable(true);
+    dispatch(Action.login(data)).then(res => {
+      if (!res) {
+        setError("email");
+        setError("password");
+      }
+      setDisable(false)
+    })
+  };
   return (
-    <Grid container>
+    <Grid container className={classes.Containers}>
       <Grid item xs={12} sm={12} md={4} className={classes.Login}>
         <img src="./logo.png" className={classes.logo} alt="img" />
-        <form className={classes.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <FormControl
             style={{
               width: "100%",
@@ -36,13 +46,14 @@ function Login() {
             <Input
               disableUnderline
               placeholder="EMAIL"
+              label="Email"
               className={classes.inputContainer}
               id="input-with-icon-adornment"
               name="email"
               style={{
                 borderBottomColor: errors.email ? "red" : "white",
               }}
-              inputRef={register({ required: true, message: "123" })}
+              inputRef={register({ required: true, message: "Please Enter Your Email" })}
               startAdornment={
                 <InputAdornment position="start">
                   <i
@@ -50,6 +61,7 @@ function Login() {
                       color: errors.email ? "red" : "white",
                       fontSize: 18,
                       paddingRight: 5,
+                      transition: "all 1s",
                     }}
                     className="flaticon-user"
                   />
@@ -70,6 +82,7 @@ function Login() {
               placeholder="PASSWORD"
               type="password"
               name="password"
+              label="Password"
               inputRef={register({ required: true })}
               className={classes.inputContainer}
               id="input-with-icon-adornment"
@@ -83,6 +96,8 @@ function Login() {
                       color: errors.password ? "red" : "white",
                       fontSize: 18,
                       paddingRight: 5,
+                      transition: "all 1s",
+
                     }}
                     className="flaticon-lock"
                   />
@@ -102,9 +117,10 @@ function Login() {
             </Typography>
           </div>
           <Button
-            className={classes.button}
-            onClick={handleSubmit(onSubmit)}
+            className={[classes.button, disable === true ? classes.disable : ""]}
             variant="contained"
+            disabled={disable}
+            type="submit"
           >
             LOGIN
           </Button>
@@ -129,23 +145,27 @@ function Login() {
           Continue With Google
         </Button>
       </Grid>
-      <Grid item xs={12} sm={12} md={8}>
-        <img style={{ width: "100%" }} src="./slider.png" alt="img" />
+      <Grid item xs={12} sm={12} md={8} style={{ minHeight: "100vh" }}>
+        <img style={{ width: "100%", height: "100vh" }} src="./slider.png" alt="img" />
       </Grid>
     </Grid>
   );
 }
 const style = makeStyles((theme) => ({
+  Containers: {
+    maxHeight: "100vh",
+    overflow: "hidden",
+
+  },
   Login: {
     width: "100%",
-    height: "100vh",
+    minHeight: "100vh",
     backgroundColor: theme.palette.primary.main,
     background: `linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(17,52,50,1) 100%)`,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    overflowY: "hidden",
     flexWrap: "wrap",
   },
   logo: {
@@ -163,6 +183,7 @@ const style = makeStyles((theme) => ({
     padding: 3,
     fontSize: 13,
     paddingLeft: 0,
+    transition: "all 1s",
     "&::placeholder": {
       color: "white",
     },
@@ -204,6 +225,9 @@ const style = makeStyles((theme) => ({
     marginTop: 50,
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  disable: {
+    backgroundColor: "lightgrey",
   },
   form: {
     width: "100%",

@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 25/04/2020 00:14
+  	Creation date: 02/05/2020 01:57
   	*/
 
 @font-face {
@@ -48,3 +48,18 @@ margin-left: 20px;
 .flaticon-paper:before { content: "\f10f"; }
 .flaticon-test:before { content: "\f110"; }
 .flaticon-slip:before { content: "\f111"; }
+.flaticon-student:before { content: "\f112"; }
+.flaticon-employee:before { content: "\f113"; }
+.flaticon-department:before { content: "\f114"; }
+.flaticon-eye:before { content: "\f115"; }
+.flaticon-team:before { content: "\f116"; }
+.flaticon-pencil:before { content: "\f117"; }
+.flaticon-admin-ui:before { content: "\f118"; }
+.flaticon-presentation:before { content: "\f119"; }
+.flaticon-humanpictos:before { content: "\f11a"; }
+.flaticon-teacher:before { content: "\f11b"; }
+.flaticon-maintenance:before { content: "\f11c"; }
+.flaticon-teamwork:before { content: "\f11d"; }
+.flaticon-workers-team:before { content: "\f11e"; }
+.flaticon-e-learning:before { content: "\f11f"; }
+.flaticon-web:before { content: "\f120"; }

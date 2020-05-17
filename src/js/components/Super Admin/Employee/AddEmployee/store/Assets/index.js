@@ -17,6 +17,7 @@ const useStyle = makeStyles((theme) => ({
   InputContainer: {
     width: "100%",
     fontFamily: theme.palette.text.fontFamily,
+
     fontSize: 12,
   },
   radio: {

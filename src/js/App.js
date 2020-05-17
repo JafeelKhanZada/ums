@@ -7,12 +7,13 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Loadable from "react-loadable";
+import Loader from "./components/Login/Loader"
 import * as Action from "./redux/actions";
 import * as Theme from "./util/Theme";
 import "./Styles.scss";
 const AsyncLogin = Loadable({
-  loader: () => import("./components/Login"),
-  loading: () => <div>Loading......</div>,
+  loader: () => import("./components/Login/index"),
+  loading: () => <Loader />,
 });
 function App() {
   const data = useSelector(({ Authentication }) => Authentication);
@@ -52,8 +53,8 @@ function App() {
                 auth === false ? (
                   <Redirect to="/login" />
                 ) : (
-                  <Redirect to="/Home" />
-                )
+                    <Redirect to="/Home" />
+                  )
               }
             />
           ) : null}

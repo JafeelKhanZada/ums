@@ -5,7 +5,7 @@ export const GET_TEACHERS = "[UMS] GET COURSE [TEACHERS]";
 export const addTeachers = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/teachers/InsertTeacher", payload)
+      .post("/api/teachers/InsertTeacher", payload)
       .then((res) => {
         console.log(res);
         return !res.data.error;
@@ -20,7 +20,7 @@ export const getTeachers = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/teachers/GetTeacher", obj)
+      .post("/api/teachers/GetTeacher", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({
@@ -42,7 +42,7 @@ export const getEmployee = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/employement/getData", obj)
+      .post("/api/employement/getData", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({

@@ -5,12 +5,12 @@ import * as Actions from "./index";
 export const login = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/auth/login", payload)
+      .post("/api/auth/login", payload)
       .then((Res) => {
         if (Res.data) {
-          console.log(Res.data.data);
           if (Res.data.error) {
             dispatch(Actions.actionError(Res.data.message));
+            return false;
           } else {
             let storage = localStorage.getItem("TOKEN");
             if (storage !== null) {
@@ -21,21 +21,23 @@ export const login = (payload) => {
             }
             let token = Res.data.data.token;
             token = token.split(" ")[1];
-            jwt.verify(token, "FUCKINGSECRET", function (err, decoded) {
+            return jwt.verify(token, "FUCKINGSECRET", function (err, decoded) {
               if (!err) {
-                Promise.all([
+                return Promise.all([
                   dispatch({
                     type: Action.LOGIN_IN,
                     payload: decoded,
                   }),
                 ]).then(() => {
                   dispatch(Actions.actionSuccess(Res.data.message));
+                  return true;
                 });
               }
             });
           }
         } else {
           dispatch(Actions.actionError("Fetching Error"));
+          return false;
         }
       });
   };

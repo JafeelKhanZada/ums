@@ -12,7 +12,7 @@ export const getEmployee = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/teachers/GetTeacher", obj)
+      .post("/api/teachers/GetTeacher", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({
@@ -31,7 +31,7 @@ export const getSemester = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/samester/GetSamester", obj)
+      .post("/api/samester/GetSamester", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({
@@ -45,7 +45,7 @@ export const getSemester = (page, pageSize, id) => {
 export const getSection = (id) => {
   return (dispatch) => {
     return axios
-      .get(`http://localhost:4000/api/samester/getSemesterBySectionId/${id}`)
+      .get(`/api/samester/getSemesterBySectionId/${id}`)
       .then((res) => {
         console.log(res, id);
         if (!res.data.error) {
@@ -60,7 +60,7 @@ export const getSection = (id) => {
 export const addAdmin = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/admin/insert", payload)
+      .post("/api/admin/insert", payload)
       .then((res) => {
         return !res.data.error;
       });
@@ -74,7 +74,7 @@ export const getCourse = () => {
       id: null,
     };
     return axios
-      .post("http://localhost:4000/api/courses/GetCourse", obj)
+      .post("/api/courses/GetCourse", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({

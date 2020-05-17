@@ -78,3 +78,9 @@ body {
     }
   }
 }
+input:-internal-autofill-selected {
+  -webkit-appearance: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: -internal-light-dark-color(black, white) !important;
+}

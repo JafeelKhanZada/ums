@@ -8,7 +8,7 @@ export const getStudent = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/employement/getData", obj)
+      .post("/api/employement/getData", obj)
       .then((res) => {
         if (!res.data.error) {
           return dispatch({

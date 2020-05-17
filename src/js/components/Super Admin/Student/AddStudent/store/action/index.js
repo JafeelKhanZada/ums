@@ -9,7 +9,7 @@ export const getBatch = (page, pageSize, id) => {
       id: id || null,
     };
     return axios
-      .post("http://localhost:4000/api/batch/getBatch", obj)
+      .post("/api/batch/getBatch", obj)
       .then((res) => {
         if (!res.data.error) {
           dispatch({
@@ -23,7 +23,7 @@ export const getBatch = (page, pageSize, id) => {
 export const postStudentInfo = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:4000/api/student_info/insert", payload)
+      .post("/api/student_info/insert", payload)
       .then((res) => {
         console.log(res);
         if (!res.data.error) return true;
