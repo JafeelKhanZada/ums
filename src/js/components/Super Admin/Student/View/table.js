@@ -30,6 +30,9 @@ function Tables(props) {
       setPageSize(value.pageSize);
     }
   }, [value]);
+  useEffect(() => {
+    dispatch(Action.getStudent())
+  }, [])
   return (
     <Grid item xs={12} sm={12} md={12}>
       <Paper

@@ -26,3 +26,10 @@ export const getDepartmentDataInDepartment = (page, pageSize, id) => {
       });
   };
 };
+export const deleteDepartment = (id, page) => dispatch => {
+  return axios.post("/api/program/delete", [id]).then(res => {
+    if (!res.data.error) {
+
+    }
+  })
+}

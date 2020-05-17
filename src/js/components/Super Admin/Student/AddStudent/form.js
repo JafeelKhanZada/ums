@@ -20,6 +20,7 @@ import {
 } from "@material-ui/pickers";
 import { useSelector, useDispatch } from "react-redux";
 import * as Action from "./store/action";
+import * as Actions from "../../../../redux/actions"
 import DateFnsUtils from "@date-io/date-fns";
 import useStyle from "./store/Assets";
 import moment from "moment";
@@ -53,6 +54,7 @@ function Forms() {
     };
     dispatch(Action.postStudentInfo(obj)).then((res) => {
       if (res) {
+        dispatch(Actions.actionSuccess("Student Created Successfully!"))
         reset();
       }
     });

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom"
 import {
   FormControl,
   TextField,
@@ -10,8 +11,10 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import * as Action from "./store/action";
+import * as Actions from "../../../../redux/actions"
 import useStyle from "./store/Assets";
 function Forms() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyle();
   const [loading, setLoading] = useState(false);
@@ -24,6 +27,8 @@ function Forms() {
     dispatch(Action.postDepartmentInDepartment(values)).then((res) => {
       if (res) {
         reset();
+        dispatch(Actions.actionSuccess("Department Created Successfully!"))
+        history.push("/View-Department")
       }
       setLoading(false);
     });
@@ -141,8 +146,8 @@ function Forms() {
                 {loading === true ? (
                   <CircularProgress size={14} />
                 ) : (
-                  "Add Department"
-                )}
+                    "Add Department"
+                  )}
               </Button>
             </Grid>
           </Grid>

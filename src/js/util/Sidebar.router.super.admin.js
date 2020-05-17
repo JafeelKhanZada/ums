@@ -14,9 +14,9 @@ const SideBar = [
   },
   {
     name: "Students", //Name of component display in sidebar
-    url: "/students", //URL path of component
+    url: "/Add-Student", //URL path of component
     icon: "flaticon-student", //Icon name of component
-    bool: false,
+    bool: true,
     iconStyle: {
       fontSize: 20,
       marginRight: 5,
@@ -86,9 +86,9 @@ const SideBar = [
   },
   {
     name: "Department", //Name of component display in sidebar
-    url: "/department", //URL path of component
+    url: "/View-Department", //URL path of component
     icon: "flaticon-department", //Icon name of component
-    bool: false,
+    bool: true,
     iconStyle: {
       fontSize: 20,
       marginRight: 5,
